@@ -1,0 +1,130 @@
+
+
+#Wheel {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+}
+
+.wheel_time{
+	width: 100%;
+	height: 40px;
+	/*background: #94fa76;*/
+	font-size: 1.6em;
+    font-weight: 600;
+    font-family: 'ABeeZee';
+    color:#303030;
+    text-align: center;
+   /* padding-top:10px;*/
+}
+
+.wheel_animation{
+	width: 100%;
+	display: flex;
+	text-align: center;
+	align-items: center;
+  justify-content: center;
+
+}
+
+.wheel_button{
+	width: 100%;
+	height: 50px;
+	display: table;
+}
+
+.button_wheel{
+  width: 50%;
+  display: inline-block;
+  background-color: #d2cfc4; /* Green */
+  border: none;
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+   font-size: 1.3em;
+  font-weight: 600;
+  font-family: 'ABeeZee';
+  color:#6245e7;
+}
+.button_wheel:hover{
+  background-color: #6245e7;
+  color: white;
+}
+
+.circle_wheel{
+  position: relative;
+  margin-left:auto;
+  margin-right:auto;
+  width: 80px;
+  height: 80px;
+  border-radius:50%;
+  border: 5px solid  #6245e7;
+  text-align:center;
+  line-height: 80px;
+    margin-top:140px;
+  margin-bottom:140px;
+}
+
+.animate_box {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: none;
+  text-align: center;
+  border-style: solid; border-bottom:none; border-radius:5px;
+  vertical-align: bottom;
+  transform: rotate(-180deg);
+  
+}
+.animate_water {
+  height: 0px;
+  background-color: #8080ff;
+  text-align: center;
+  position: relative;
+  bottom:0px;
+  -webkit-transform: rotate(-180deg);
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke:  #6245e7;
+}
+
+.percentage {
+  text-align:center;
+  font-weight: 900;
+  color: #777373;
+  font-size: 1.2em;
+}
+
+.filler{
+  margin-top:3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;   
+  background: #7b6df3;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  /*top: -165px; 
+  left: 30px;*/
+  top: 30px; 
+  left: 230px;
+}
+.lrg-wheel{
+display: inline;
+flex-direction:row-reverse;
+}

@@ -1,0 +1,101 @@
+.mySlides {
+	display:none;
+-webkit-transition: display 2s; /* For Safari 3.1 to 6.0 */
+  transition: display 2s;
+}
+
+.collapsible{
+  margin-top:3px;
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;   
+  background: #d2cfc4;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.w3-left, .w3-right, .w3-badge {
+cursor:pointer;
+}
+.slider_button{
+	width:300px;
+	height: 25px;
+	background:none;
+	text-align: center;
+	display: table;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -30px;
+}
+.button_slider{
+  width: 50%;
+  display: inline-block;
+  background-color: #d2cfc4; /* Green */
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight: 600;
+  font-family: 'ABeeZee';
+  color:#6245e7;
+  border-radius: 15px 0 0 15px;
+}
+.left{
+  border-radius: 0 15px 15px 0;
+}
+
+.button_slider:hover{
+  background-color: #6245e7;
+  color: white;
+}
+
+.init{
+  font-family: 'ABeeZee';
+  width: 100%;
+  text-align: center;
+  color: #333;
+  line-height: 1.6;
+  font-weight:600;
+  font-size: 1em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background: #d2cfc4;
+  cursor: pointer;
+  border-style:solid;
+}
+
+ul.result_text li::before{
+/*list-style-type:disc;	
+color:  #f8f21f; 
+font-size: 3em;
+line-height: 0.5em;*/
+  content: "\2022";
+  color: #f8f21f;
+  font-size: 4em;
+  display: inline-block; 
+  vertical-align: middle;
+  
+}
+ul span{
+vertical-align: middle;
+font-size: 1.1em;
+color: #333;
+}
+ul p{
+margin-left:10px;
+margin-top:-10px;
+text-align: justify;
+text-justify: inter-word;
+}
+	

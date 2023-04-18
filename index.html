@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+ <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta name="description" content="Welcome to a Lorentz wheel simulator. 
+The purpose of this web page is to allow you to take your first steps in understanding chaotic phenomena and understanding their general principles. 
+It is a physical model, which although simplistic, will allow you to explore certain notions such as sensitivity to initial conditions or understand what a lorentz attractor is."> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" href="resourses/css/Lorentzstyle.css">
+<link rel="stylesheet" href="resourses/css/Menu.css">
+<link rel="stylesheet" href="resourses/css/WheelDisplay.css">
+<link rel="stylesheet" href="resourses/css/checkboxes.css">
+<link rel="stylesheet" href="resourses/css/Container.css">
+<link rel="stylesheet" href="resourses/css/tabdisplay.css">
+<link rel="stylesheet" href="resourses/css/Modal.css">
+</head>
+
+
+<!-- Value test DEbit:1.3 / delta:A.84 rad / SecFuite:4,3mm / Err:1% ${pageContext.request.contextPath}/LorentTest -->
+   <title>Lorentz Wheel Simulator</title>
+   <link rel="shortcut icon" type="image/jpg" href="resourses/images/favicon.JPG"/>    
+
+
+<body>
+<div id="main-body">
+<!--  
+<nav id="swipeNav">
+	    <ul>
+	        <li><a href="WhatIs.html">What It's Lorentz Wheel??</a></li>
+	        <li><a href="#">Simulator</a></li>
+	        <li><a href="#">How chao works?</a></li>
+	        <li><a href="#">SourceCode</a></li>
+	    </ul>
+	</nav>
+  -->
+
+
+ <div class="menu">
+  <h2 class="titleSheet">Lorentz Wheel</h2>
+  <div class="modal_icon_header data-title container-relative-right" id="Modal_Presentation">i</div>
+ </div>
+
+ <!-- Wheel simu ------->
+<div class="container-top">
+</div>
+
+<div class="container-flex">
+
+  <div class="container-inline-three container-data-2d">
+    <div class="box">
+        <form class="container-flex" method="post" action="#!" id="form" onsubmit ="return false">
+           <div class="container-box">
+
+                <div class="container-flex">
+                      <div class="data-title container-relative">Initial Parameter</div>
+                      <div class="modal_icon data-title container-relative-right" id="Modal_Sensivity">i</div>
+                </div> 
+
+                <ul class="margin-center">
+                <li>
+                  
+                </li>  
+                <li><button class="init button_wheel margin-bottom" id="Restart" style="display: none; width:100%;" onclick="Clean_Restart()">Restart Computation</button></li>
+              
+                <!--  <li class="title"><label>VALEURS INITIALES</label> </li>-->
+                <li><label>Debit (L/s)</label>
+                <input class="slider" id="debit" type="range" step="0.001" value="0.357" min="0.1" max="0.5" />
+                <div class="slider_label"></div> </li>
+
+                <li><label>Section de fuite (m)</label>
+                  <input class="slider" id="diamfuite" type="range" value="0.0034" min="0.001" max="0.01" step="0.0001" />
+                  <div  class="slider_label"></div></li>
+                
+                <li><label>Delta angle (rad)</label>
+                <input class="slider" id="deltaRad" type="range" value="0.03" min="-0.1" max="0.1" step="0.001" />
+                <div  class="slider_label"></div></li>
+                                
+                <li><label>Wheel Radius (m)</label>
+                <input class="slider" id="radius" type="range" value="0.96" min="0.7" max="1" step="0.01" />
+                <div  class="slider_label"></div></li>
+
+                <li><label>Friction Coef</label>
+                  <input class="slider" id="frictcoeff" type="range" value="0.478" min="0.001" max="0.9" step="0.001" />
+                  <div  class="slider_label"></div></li>
+
+                <li><label>Erreur mesure (%)</label>
+                  <input class="slider" id="err" type="range" value="0.3" min="0.1" max="1" step="0.01" />
+                  <div  class="slider_label"></div></li>
+                
+                  <div class="ckbx-circle-2 container-inline-two ">
+                    <input name="ckbx-circle-2" id="ckbx-circle-2-1" type="checkbox" onclick="showTwoWheel()" checked="true">
+                    <label for="ckbx-circle-2-1">Display two wheel?</label>
+                  </div>
+
+                  <div class="wheel_button">
+                    <button class="button_wheel margin-global" style="width:100%; visibility: visible;" id='Run_button' onclick="Array_Builder()">Run</button>
+                  </div>
+                  <div id="test"></div>
+              
+                </ul>
+           </div> 
+        </form>
+   </div>
+  </div>
+
+  <div class="container-inline-two-third container-data-2d">
+    <!-- ID id ="Wheel" OLD -->
+    <div class="container-box container-wheel container-flex">
+      
+          <div class="container-flex">
+            <div class="data-title container-relative">Simulation</div>
+            <div class="modal_icon data-title container-relative-right" id="Modal_Equation">i</div>
+          </div>
+          <div class="wheel_time " id=display_time></div>
+
+        <div class="container-wheel-display">
+
+          <div class="circle_wheel">
+            <text class="percentage" id="moment"></text>
+             <div class="wheel_animation">
+              <div class="filler" id="filler-id"></div>
+              <div class= "animate_box" id ="box0" style="top: 9px; left: 162px;"><div class= "animate_water" id= "water0"></div></div>
+              <div class= "animate_box" id ="box1" style="top: 115px; left: 120px;"><div class= "animate_water" id= "water1"></div></div>
+              <div class= "animate_box" id ="box2" style="top: 160px; left: 14px;"><div class= "animate_water" id= "water2"></div></div>
+              <div class= "animate_box" id ="box3" style="top: 118px; left: -93px;"><div class= "animate_water" id= "water3"></div></div>
+              <div class= "animate_box" id ="box4" style="top: 12px; left: -138px;"><div class= "animate_water" id= "water4"></div></div>
+              <div class= "animate_box" id ="box5" style="top: -95px; left: -96px;"><div class= "animate_water" id= "water5"></div></div>
+              <div class= "animate_box" id ="box6" style="top: -140px; left: 10px;"><div class= "animate_water" id= "water6"></div></div>
+              <div class= "animate_box" id ="box7" style="top: -98px; left: 117px;"><div class= "animate_water" id= "water7"></div></div>
+             </div>
+          </div>
+
+          <div class="circle_wheel" id="secondWheel" >
+            <text class="percentage" id="moment2"></text>
+             <div class="wheel_animation">
+              <div class="filler" id="filler-id-2"></div>
+              <div class= "animate_box" id ="box0-2" style="top: 9px; left: 162px;"><div class= "animate_water" id= "water0-2"></div></div>
+              <div class= "animate_box" id ="box1-2" style="top: 115px; left: 120px;"><div class= "animate_water" id= "water1-2"></div></div>
+              <div class= "animate_box" id ="box2-2" style="top: 160px; left: 14px;"><div class= "animate_water" id= "water2-2"></div></div>
+              <div class= "animate_box" id ="box3-2" style="top: 118px; left: -93px;"><div class= "animate_water" id= "water3-2"></div></div>
+              <div class= "animate_box" id ="box4-2" style="top: 12px; left: -138px;"><div class= "animate_water" id= "water4-2"></div></div>
+              <div class= "animate_box" id ="box5-2" style="top: -95px; left: -96px;"><div class= "animate_water" id= "water5-2"></div></div>
+              <div class= "animate_box" id ="box6-2" style="top: -140px; left: 10px;"><div class= "animate_water" id= "water6-2"></div></div>
+              <div class= "animate_box" id ="box7-2" style="top: -98px; left: 117px;"><div class= "animate_water" id= "water7-2"></div></div>
+             </div>
+          </div>
+        </div>
+
+          <div class="margin-center container-reader">
+            <input id="slider-timeframe" class="slider-timeframe margin-center" type="range" value="0" min="0" max="2000" step="1" onchange="setT()" onmousedown="pause()" oninput="sliderColor()" disabled/> 
+          </div>
+          <div class="margin-center container-player">
+            <div class="container-inline margin-center">
+              <button id="playButton" class="button_player" onclick="playFrame()" disabled><img id="playIcon" src="resourses/images/Play_disabled.svg"></button>
+              <button id="pauseButton" class="button_player" onclick="pauseFrame()"disabled><img id="pauseIcon" src="resourses/images/Pause_disabled.svg"></button>
+              <button id="stopButton" class="button_player" onclick="stopFrame()" disabled><img id="stopIcon" src="resourses/images/Stop_disabled.svg"></button>            
+            </div> 
+          </div>
+    </div>   
+  </div>
+</div>
+
+<div id="GraphAera" style="display:none;">
+<!-- Dashboard Graph -->
+  <div class="container-flex">
+    
+      <div class="container-inline-two container-data-2d container-box-embed">
+
+          <div class="container-flex">
+            <div class="data-title container-relative">Lorentz Attractor</div>
+            <div class="modal_icon data-title container-relative-right" id="Modal_Attractor">i</div>
+          </div>
+
+          <div class="data-icon container-inline ">
+            <p></p>
+          </div>
+          <div class="data-chart container-block margin-center">
+            <div id="butterfly2D"></div>
+          </div>
+          <div class="data-text container-block margin-center">
+            <p>Ici nous representons l'espace des phase sur 2 dimmensions: <span>La valeur de vitesse angulaire sur l'axe des X et la position en x du centre de gravite sur l'axe Y.</span>
+              Nous affichons sur le meme graphique les deux simulations. 
+              Cela permet de se rendre compte que dans les modes chaotiques <span>ils partagent le meme espace des phases. </span>
+              Lors de la simulation les positions des points vont parcourir cet espace en fonction des valeurs calculees.</p>
+          </div>
+      </div>
+      
+      <div class="container-inline-two container-data-2d container-box-embed">
+
+          <div class="container-flex">
+            <div class="data-title container-relative">Wheel speed rotation</div>
+          </div>
+
+          <div class="data-icon container-inline">
+            <p></p>
+          </div>
+          <div class="data-chart margin-center">
+            <div id="container"></div>
+          </div>
+          <div class="data-text container-block margin-center">
+            <p>Ici nous representons simplement <span>la vitesse de rotation des deux roues</span> en fonction du temps
+              . Nous pouvons suivre l'evolution de la valeur au cours du temps.
+              Cela permet de voir le comportement choatique du systeme et du changement de 
+              comportement au bout de quelques iterations.
+              Par exemple pour une<span>erreur de mesure de 0.3% </span> il y aura une difference
+              de <span> 1,72×10-4 degre </span> entre les position initiale des 2 roues
+            </p>
+          </div>
+      </div>
+   
+  </div>
+
+  <div class="container-flex">
+
+    <div class="container-inline-three container-data-2d container-box">
+
+      <div class="container-flex">
+            <div class="data-title container-relative">Bifurcation diagram</div>
+            <div class="modal_icon data-title container-relative-right" id="Modal_Bifdiagram">i</div>
+      </div>
+
+      <div class="data-icon container-inline">
+        <p></p>
+      </div>
+      <div class="data-chart margin-center ">
+        
+        <div id="container-tab" class="container-flex-column">
+
+          <div id="input-graph">
+            <input id="tab-1" type="radio" name="tab-group" checked="checked" onclick="tabManagment('debit')" />
+            <label for="tab-1">Debit</label>
+            <input id="tab-2" type="radio" name="tab-group" onclick="tabManagment('diamfuite')" />
+            <label for="tab-2">Diam Fuite</label>
+            <input id="tab-3" type="radio" name="tab-group"  onclick="tabManagment('deltaRad')" />
+            <label for="tab-3">Delta Rad</label>
+            <input id="tab-4" type="radio" name="tab-group" onclick="tabManagment('radius')" />
+            <label for="tab-4">Wheel Radius</label> 
+            <input id="tab-5" type="radio" name="tab-group" onclick="tabManagment('frictcoeff')" />
+            <label for="tab-5">Friction Coef</label>          
+          </div>
+          <div id="content">
+           
+              <div id="content-1" class="tab-content">
+                <div id="BifurcationGraph-debit" class="graph-display"></div>
+              </div>
+              <div id="content-2" class="tab-content">
+                <div id="BifurcationGraph-diamfuite" class="graph-display"></div>
+              </div>
+              <div id="content-3" class="tab-content">
+                <div id="BifurcationGraph-deltarad" class="graph-display"></div>
+              </div>
+              <div id="content-4" class="tab-content">
+                <div id="BifurcationGraph-radius" class="graph-display"></div>
+              </div>
+              <div id="content-5" class="tab-content">
+                <div id="BifurcationGraph-frictcoeff" class="graph-display"></div>
+              </div>
+
+
+         </div>
+        </div>
+
+      </div>
+      <div class="data-text container-block margin-center">
+        <p>Dans un diagramme de bifurcation, l’axe horizontal représente la <span>valeur du paramètre faisant varier et l’axe vertical représente le comportement du système.</span> 
+          Le comportement du système est généralement représenté par un tracé d’une mesure de l’état du système, telle que sa position, sa vitesse ou sa phase.</p>
+          <p><span>En vert</span> vous trouverez la valeur du parametre pour la simulation jouee. En choisisant une nouvelle valeur et en relancant la simulation vous pourrais explorer l'espace des phase
+            pour un parametre.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+ 
+<!-- Modal content -->
+<div id="myModal" class="modal">
+</div>
+</div>
+
+
+<!-- Javascript slider -->
+<script type="text/javascript">
+var dataW=[];
+</script>
+
+
+<script src="resourses/js/lorentzwheelScript.js" ></script>
+<script src="resourses/js/MenuSwipe.js" ></script>
+<script src="resourses/js/Modal.js" ></script>
+<!-- Compute Script -->
+<script src="resourses/js/Back-end/Simulation_Bifurcation.js" ></script>
+<script src="resourses/js/Back-end/Simulation_Computation.js" ></script>
+<script src="resourses/js/Back-end/Object_wheel.js" ></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+</script>
+
+</body>
+</html>

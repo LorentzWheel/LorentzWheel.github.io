@@ -1,0 +1,192 @@
+
+div[class^="ckbx-style-"] input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+
+
+.ckbx-style-move {
+  font-size: 1.0em;
+  position: relative;
+  padding: 3px;
+  border-radius: 4px;
+  margin-top:30px;
+}
+
+.ckbx-style-move input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+
+.ckbx-style-move label {
+  width: 10em;
+  height: 1.8em;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  background: #d2cfc4;
+}
+
+.ckbx-style-move label:before {
+  content: 'Move';
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size:1em;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+  background: #4CAF50;
+  left: 50%;
+  bottom: 0;
+  top: 0;
+  border-radius: 4px;
+}
+
+.ckbx-style-move label:after {
+  content: 'Fix';
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  color: #333;
+  line-height: 1.6;
+  top: 0;
+  bottom: 0;
+  font-weight:600;
+  font-size: 1em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background: #d2cfc4;
+}
+
+.ckbx-style-move input[type=checkbox]:checked + label:before {
+  background: #d2cfc4;
+  color: #333;
+}
+
+.ckbx-style-move input[type=checkbox]:checked + label:after {
+  background: #F25F5C;
+  color: #fff !important;
+}
+
+/*_________________*/
+
+.ckbx-style-fill {
+  font-size: 1.0em;
+  position: relative;
+  padding: 3px;
+  border-radius: 4px;
+  margin-top:30px;
+}
+
+.ckbx-style-fill input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+
+.ckbx-style-fill label {
+  width: 10em;
+  height: 1.8em;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  background: #d2cfc4;
+}
+
+.ckbx-style-fill label:before {
+  content: 'Right';
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size:1em;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+  background: #5b9ff2;
+  left: 50%;
+  bottom: 0;
+  top: 0;
+  border-radius: 4px;
+}
+
+.ckbx-style-fill label:after {
+  content: 'Top';
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  color: #333;
+  line-height: 1.6;
+  top: 0;
+  bottom: 0;
+  font-weight:600;
+  font-size: 1em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background: #d2cfc4;
+}
+
+.ckbx-style-fill input[type=checkbox]:checked + label:before {
+  background: #d2cfc4;
+  color: #333;
+}
+
+.ckbx-style-fill input[type=checkbox]:checked + label:after {
+  background: #856cc6;
+  color: #fff !important;
+}
+.ckbx-circle-2 {
+  font-size: 1.0em;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ckbx-circle-2 input[type=checkbox] {
+
+  opacity: 0;
+}
+
+.ckbx-circle-2 label {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  width: 1em;
+  height: 1em;
+  text-align: right;
+}
+
+.ckbx-circle-2 label:before {
+  content: '';
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  transition: background 0.1s 0.1s ease;
+  background: #333;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 100%;
+  margin-left:150px;
+}
+
+.ckbx-circle-2 label:after {
+  content: '';
+  position: absolute;
+  width: .6em;
+  height: .6em;
+  border-radius: 100%;
+  left: .2em;
+  top: .2em;
+  transition: all 0.2s ease;
+  background: #F25F5C;
+  animation: switch-off-circle .2s ease-out;
+  margin-left:150px;
+}
+
+.ckbx-circle-2 input[type=checkbox]:checked + label:after {
+  background: #4CAF50;
+  width: 1em;
+  height: 1em;
+  top: 0;
+  left: 0;
+  animation: switch-on-circle .2s ease-out;
+}

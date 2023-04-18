@@ -1,0 +1,177 @@
+.container-top{
+    width: 100%;
+    height: 65px;
+}
+
+.container-block{
+    display: block;
+    width: 100%;
+}
+.container-reader{
+    display: block;
+    width: 80%;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.container-player{
+    display: block;
+    margin-bottom:30px;
+}
+.container-inline{
+    display: inline-block;
+}
+.container-inline-two{
+    display: inline-block;
+    width: 45%;
+}
+.container-inline-three{
+    display: inline-block;
+    width: 33%;
+}
+.container-inline-two-third{
+    display: inline-block;
+    width: 66%;
+}
+.hidden{
+    visibility: hidden;
+}
+.margin-center{
+    margin-left: auto;
+    margin-right: auto;
+}
+.margin-global{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.margin-bottom{
+    margin-bottom:30px;
+}
+.container-box{
+    /*border-color: #371ab6;
+    border-width: 2px;
+    border-style: solid;*/
+    width: 100%;
+    border-radius: 30px;
+    background-color: #ffffff;
+}
+.container-box-embed{
+    /*border-color: #371ab6;
+    border-width: 2px;
+    border-style: solid;*/
+    border-radius: 30px;
+    background-color: #ffffff;
+}
+
+.container-wheel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+}
+
+.container-wheel-display{
+    display:flex; 
+    flex-direction:row;
+    padding-top: 20px;
+}
+.container-flex{
+    display: flex;
+}
+.container-flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-data-2d{
+    margin:  2%;
+    padding: 30px;
+   
+}
+.container-relative{
+    position:relative;
+    top: 20px;
+    left: 50px;
+}
+.container-relative-right {
+    position: relative;
+    top: 20px;
+    right: 50px;
+}
+.container-data-2d .data-title{
+    color:var(--title-color);
+    font-size: large;
+    /*margin:  10px;*/
+    font-size: larger;
+    font-weight: bold;
+}
+.container-data-2d .icon{
+    display: block;
+}
+.container-data-2d .data-chart{
+    display: block;
+    width: 80%;
+    padding:  10px;
+
+}
+.container-data-2d .data-text{
+    display: block;
+    width: 80%;
+    padding:  10px;
+}
+
+.button_player{
+    background-color:transparent;
+    border-style:none;
+}
+.button_player:hover{
+  cursor: pointer;
+}
+.button_player img{
+    width: 50px;
+}
+
+.data-title{
+    color:var(--title-color);
+    font-size: large;
+    font-size: larger;
+    font-weight: bold;
+}
+.container-text-centered{
+text-align: center;
+margin-top:auto;
+margin-bottom:auto;
+}
+
+.init-condition-span{
+    font-weight: bold;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+
+@media (max-width: 900px) {
+
+
+    .container-inline-three{
+        display: inline-block;
+        width: 100%;
+    }
+    .container-inline-two-third{
+        display: inline-block;
+        width: 100%;
+    }
+    .container-inline-two{
+        display: inline-block;
+        width: 100%;
+    }
+    .container-wheel-display{
+        display:flex;
+        flex-direction: column;
+        padding-top: 20px;
+    }
+    .container-flex{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
