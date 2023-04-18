@@ -1,6 +1,7 @@
 # LorentzWheel.github.io
 
 Welcome to a  Lorentz wheel simulator. The purpose of this web page is to allow you to take your first steps in understanding chaotic phenomena and understanding their general principles. It is a physical model, which although simplistic, will allow you to explore certain notions such as sensitivity to initial conditions or understand what a lorentz attractor is.
+For the time being the description in the web page is in French. New Version is comming.
 
 ## System Description
 A Lorenzian (or "chaotic") paddle wheel is a physical model that perfectly matches Lorenz's equations. A chaotic paddle wheel is like a normal paddle wheel, except for the fact that its buckets leak. The water flows into the top bucket at a steady rate and gives energy to the system while the water escapes from each bucket at a steady rate and removes the energy from the system.
